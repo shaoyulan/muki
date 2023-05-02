@@ -1,0 +1,154 @@
+@mixin pc-xxl {
+  @media screen and (min-width: 1366px) {
+    @content;
+  }
+}
+
+@mixin pc-xl {
+  @media screen and (max-width: 1365.98px) {
+    @content;
+  }
+}
+
+@mixin pc-lg {
+  @media screen and (max-width: 1199.98px) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media screen and (max-width: 991.98px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile-xl {
+  @media screen and (max-width: 575.98px) {
+    @content;
+  }
+}
+
+@mixin mobile-lg {
+  @media screen and (max-width: 414px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 375px) {
+    @content;
+  }
+}
+
+@mixin mobile-down {
+  @media screen and (max-width: 374.98px) {
+    @content;
+  }
+}
+
+@mixin mobile-no-iphoneX {
+  @media screen and (max-width: 375px) and (max-height: 811.98px) {
+    @content;
+  }
+}
+
+@mixin mobile-xs {
+  @media screen and (max-width: 320px) {
+    @content;
+  }
+}
+
+@mixin media-up($media, $alter: 0) {
+  // 預設值
+  $new_media : $media;
+  // alter 無須加上px
+  $alter : $alter;
+
+  // 是否是模組定義的斷點
+  @if type-of($media)=='string' {
+    $new_media : to-number(str-replace(quote(map-get($breakpoints, $media)), px, ''));
+  }
+
+  @media (min-width: $new_media + $alter + 'px') {
+    @content
+  }
+}
+
+
+@mixin media-between($media_max, $media_min) {
+  // 預設值
+  $new_media_max : $media_max;
+  $new_media_min : $media_min;
+
+  // 是否是模組定義的斷點
+  @if type-of($media_max)=='string' {
+    $new_media_max : to-number(str-replace(quote(map-get($breakpoints, $media_max)), px, ''));
+  }
+
+  @if type-of($media_min)=='string' {
+    $new_media_min : to-number(str-replace(quote(map-get($breakpoints, $media_min)), px, ''));
+  }
+
+  @media (max-width: $new_media_max + 'px') and (min-width: $new_media_min + 'px') {
+    @content
+  }
+}
+
+
+@mixin media($media, $alter: 0) {
+  // 預設值
+  $new_media : $media;
+  // alter 無須加上px
+  $alter : $alter;
+
+  // 是否是模組定義的斷點
+  @if type-of($media)=='string' {
+    $new_media : to-number(str-replace(quote(map-get($breakpoints, $media)), px, ''));
+  }
+
+  @media (max-width: $new_media + $alter + 'px') {
+    @content
+  }
+}
+
+@mixin phone {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin pad {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin pad_pro {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin pad_pro_lg {
+  @media (max-width: 1366px) {
+    @content;
+  }
+}
+
+@mixin macbook {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin desktop_sm {
+  @media (max-width: 1900px) {
+    @content;
+  }
+}

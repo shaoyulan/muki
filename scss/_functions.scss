@@ -1,0 +1,29 @@
+// Linear interpolations in CSS as a Sass function
+// Author: Mike Riethmuller | https://madebymike.com.au/writing/precise-control-responsive-typography/ I
+@function rwd-val(
+  $min-screen,
+  $min-value,
+  $max-screen,
+  $max-value
+) {
+  $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b: $min-value - $a * $min-screen;
+
+  $sign: '+';
+
+  @if ($b < 0) {
+    $sign: '-';
+    $b: abs($b);
+  }
+
+  @return calc(#{$a * 100}vw #{$sign} #{$b});
+}
+
+// px 轉換為 rem
+@function torem($px){
+  $px-num: $px / 1px;
+  $body-font-size-num: $body-font-size / 1px;
+  $rem-num: $px-num / $body-font-size-num * 1rem;
+
+  @return $rem-num; 
+}

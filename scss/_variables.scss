@@ -1,0 +1,107 @@
+/* =============================== 
+    font
+=============================== */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Rubik:wght@400;500;700&display=swap');
+
+$body-font-size: 14px;
+
+$ff-rebik: 'Rubik';
+$ff-nunito: 'Nunito';
+$ff-msjh: "微軟正黑體", "Microsoft JhengHei";
+$ff-ios: "PingFang SC";
+$ff-fallback: sans-serif;
+$ff-note: $ff-ios, $ff-msjh, $ff-fallback;
+
+/* =============================== 
+    Colors
+=============================== */
+
+// theme
+$color-theme: #CE0E2D;
+$color-primary: #005295;
+$color-sec: #658BC8;
+
+// font
+$color-font: #000000;
+$color-font-gray: #A8A8A8;
+
+// other
+$text-color: #3A3A3A;
+$input-text-color: #362A25;
+$color-orange: #F58C29;
+$color-blue: #13BFD6;
+$color-yellow: #FBED9B;
+
+$color-danger: #ff5970;
+
+$color-divider-line: rgba(#C8C7CC, 0.5);
+
+// 特定用途
+$color-customer-record-1: #5F76EE; // 已完成
+$color-customer-record-2: #BE00BE; // 待聯繫
+$color-customer-record-3: #CE0E2D; // 需追蹤
+$color-customer-record-4: #008577; // 追蹤完
+
+
+/* =============================== 
+    其他
+=============================== */
+
+$mobile-menu-breakpoints: 1400;
+
+
+@mixin _set-root-vars {
+  :root {
+    --bs-body-color: #000;
+    --header-height: 170px;
+    --brand-theme-color: #{$color-theme};
+    --scrollbar-width: 17px;
+
+    // font-size
+    --body-font-size: #{$body-font-size};
+
+    // line-height
+    --one-line-height: calc(1em * var(--bs-body-line-height));
+
+    // other
+    --color-divider-line: #{$color-divider-line};
+  }
+
+  // base-input
+  :root {
+    --base-input-height: 40px;
+    --base-input-border-width: 0px;
+    --base-input-icon-size: 18px;
+    --base-input-icon-color: #8B8B8B;
+    --base-input-badge-size: 20px;
+    --base-input-font-size: 16px;
+    --base-input-label-font-size: torem(15px);
+    --base-input-color: #000000;
+    --base-input-label-color: #333;
+    --base-input-placeholder-color: #7E828D;
+    --base-input-horizontal-padding: calc(34 / 20 * var(--base-input-font-size));
+    --base-input-bg: #E2E2E2;
+    --base-input-radius: 0px;
+    --base-input-hpadding: 10px;
+    --base-input-vpadding: 10px;
+    --base-input-append-width: 30px;
+    --base-input-preppend-width: 30px;
+    --base-input-caret-color: #000000;
+    --base-input-border-color: #fff;
+
+    --half-base-input-height: calc(var(--base-input-height) / 2);
+    --half-base-input-icon-size: calc(var(--base-input-icon-size) / 2);
+
+    // icon 置中用
+    --half-icon-size-and-font-size-diff: calc((var(--base-input-icon-size) - var(--base-input-font-size)) / 2 * 1.5);
+    // icon 要置中需要的 margin值
+    --icon-center-mt: calc(var(--half-base-input-height) - var(--half-base-input-icon-size));
+    // icon 置中用 /
+
+    // badge 置中用
+    --half-badge-size-and-font-size-diff: calc((var(--base-input-badge-size) - var(--base-input-font-size)) / 2 * 1.5);
+    // badge 要置中需要的 margin值
+    --badge-center-mt: calc(var(--half-base-input-height) - var(--half-base-input-icon-size) - var(--half-icon-size-and-font-size-diff));
+    // badge 置中用 /
+  }
+}
