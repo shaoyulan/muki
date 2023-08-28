@@ -1350,3 +1350,53 @@ export const openPhotoBrowser = function (imgArr, idx) {
 
   return photoBrowser
 }
+
+/**
+ * 啟用drag scroll
+ * @param {*} scrollEl 
+ * @param {*} speed 
+ */
+function enableDragScroll(scrollEl, speed){
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  var speed = speed || 1;
+  var checkIsDownTimeout = null
+
+  /**
+   * @description 關閉代表移動狀態德class
+   * 有些情況下需要判斷是否剛剛有移動過，因為dom event觸發順序不同關係，所以需要延遲一點時間
+   * @param {boolean} status 
+   */
+  function closeMoveClass(status){
+    if ( checkIsDownTimeout ) clearTimeout(checkIsDownTimeout)
+    checkIsDownTimeout = setTimeout(function(){
+      scrollEl.classList.remove('is-scroll-move');
+    }, 10)
+  }
+
+  scrollEl.addEventListener('mousedown', (e) => {
+      isDown = true
+      scrollEl.classList.add('is-scroll-active');
+      startX = e.pageX - scrollEl.offsetLeft;
+      scrollLeft = scrollEl.scrollLeft;
+  });
+  scrollEl.addEventListener('mouseleave', (e) => {
+    isDown = false
+    scrollEl.classList.remove('is-scroll-active');
+    closeMoveClass()
+  });
+  scrollEl.addEventListener('mouseup', (e) => {
+    isDown = false
+    scrollEl.classList.remove('is-scroll-active');
+    closeMoveClass()
+  });
+  scrollEl.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      scrollEl.classList.add('is-scroll-move');
+      const x = e.pageX - scrollEl.offsetLeft;
+      const walk = (x - startX) * speed; //scroll-fast
+      scrollEl.scrollLeft = scrollLeft - walk;
+  });
+}
