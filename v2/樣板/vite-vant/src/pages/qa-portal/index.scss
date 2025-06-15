@@ -1,0 +1,35 @@
+@import "@design";
+
+.p-about {
+  .about-logo {
+    display: block;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+
+  .deco-img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+  }
+}
+
+.about-bed {
+  background: #fff;
+  padding: 35px 20px;
+  border-radius: 10px;
+}
+
+.about-item {
+  margin-bottom: 25px;
+
+  &__title {
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__content {
+    color: #7a7a7a;
+  }
+}

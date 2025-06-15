@@ -1,0 +1,92 @@
+@mixin media($media) {
+  @media(max-width: $media + "px") {
+    @content;
+  }
+}
+
+@mixin media-up($media) {
+  @media(min-width: $media + "px") {
+    @content;
+  }
+}
+
+@mixin customWeb {
+  @media(max-width: $webWidth) {
+    @content;
+  }
+}
+
+@mixin pad {
+  @media(max-width: 820px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media(max-width:568px) {
+    @content;
+  }
+}
+
+@mixin mobile-xs {
+  @media(max-width: 414px) {
+    @content;
+  }
+}
+
+
+@mixin hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin absolute($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// 單行文字ellipsis
+@mixin text-ellipsis {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 多行文字ellipsis
+@mixin text-lines-ellipsis($line-height, $max-lines, $setHeight: true, $inline: false) {
+  @if $setHeight {
+    height: $line-height * $max-lines;
+  }
+
+  max-height: $line-height * $max-lines;
+  line-height: $line-height;
+  -webkit-line-clamp: $max-lines;
+  // 設定ellipsis
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+
+  @if $inline {
+    display: -webkit-inline-box;
+  } @else {
+    display: -webkit-box;
+  }
+}
+
+@mixin flex($justify: stretch, $align: stretch) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// 當前僅對wechat inapp browser有效
+@mixin disable-font-size-zoom {
+  -webkit-text-size-adjust: none!important;
+}

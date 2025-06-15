@@ -1,0 +1,18 @@
+/**
+ * 支援行動裝置開發用的樣式文件
+ */
+
+:root{
+  --window-inner-height: 100vh;
+  --safe-area-top:0px;
+  --safe-area-right:0px;
+  --safe-area-bottom:0px;
+  --safe-area-left:0px;
+}
+
+@supports (left:env(safe-area-inset-left)) {
+  :root{
+    --safe-area-top:env(safe-area-inset-top);
+    --safe-area-bottom:env(safe-area-inset-bottom);
+  }
+}

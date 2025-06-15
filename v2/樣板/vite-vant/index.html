@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+  <meta name="theme-color" content="#fff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="description" content="description描述">
+  <meta name="keywords" content="keyword1, keywords2" />
+  <title><%- brandName %></title>
+  <script>
+    if(typeof Capacitor !== 'undefined') {
+      if(Capacitor.Plugins && Capacitor.Plugins.TextZoom){
+        Capacitor.Plugins.TextZoom.set({value: 1})
+      }
+      if(Capacitor.Plugins && Capacitor.Plugins.StatusBar){
+        Capacitor.Plugins.StatusBar.setStyle({Style: 'DEFAULT'});
+        Capacitor.Plugins.StatusBar.setBackgroundColor({color: '#ffffff'});
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <% if (mode == 'release') { %>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-xxxx"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '');
+  </script>
+  <% } %>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

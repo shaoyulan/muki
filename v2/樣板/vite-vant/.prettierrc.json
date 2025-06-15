@@ -1,0 +1,27 @@
+{
+  "trailingComma": "es5",
+  "useTabs": false,
+  "tabWidth": 2,
+  "semi": false,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.vue",
+      "options": {
+        "semi": false,
+        "useTabs": false,
+        "tabWidth": 2,
+        "printWidth": 200
+      }
+    },
+    {
+      "files": "*.html",
+      "options": {
+        "useTabs": false,
+        "semi": true,
+        "tabWidth": 2,
+        "printWidth": 200
+      }
+    }
+  ]
+}

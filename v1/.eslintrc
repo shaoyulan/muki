@@ -1,0 +1,52 @@
+{
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "plugins": [
+      "vue",
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      // 使用vue3須改為 plugin:vue/vue3-recommended
+      "plugin:vue/recommended",
+      "@vue/eslint-config-typescript",
+      "@unocss",
+      "./.eslintrc-auto-import.json"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "semi": [
+        "error",
+        "never"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "vue/multi-word-component-names": "off",
+      "vue/no-v-html": "off",
+      "vue/no-multiple-template-root": "off",
+      "vue/no-v-model-argument": 0,
+      // 關掉eslint的no-unused-vars，改用typescript的
+      // @description eslint 無法識別 typescript，且typescript已能辦到 no-unused-vars 檢查
+      // @see https://github.com/typescript-eslint/typescript-eslint/issues/2619#issuecomment-701901752
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error"
+    }
+  }

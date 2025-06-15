@@ -1,0 +1,65 @@
+@use 'sass:meta';
+@use '@design' as *;
+@use '../utils/variables' as variables;
+
+:root {
+  @each $name, $value in meta.module-variables("variables") {
+    @if meta.type-of($value) != 'map' {
+      --#{$name}: #{$value};
+    }
+  }
+  // project
+  --height-header-safe: calc(#{$height-header} + var(--safe-area-top));
+  --height-footer-safe: calc(#{$height-footer} + var(--safe-area-bottom));
+  --height-page: calc(100% - var(--height-header) - var(--height-footer-bare));
+
+  &:root{
+    // override vant
+    --van-base-font: var(--ff-main);
+    --van-nav-bar-height: var(--height-header-safe);
+    --van-tabbar-height: var( --height-footer-safe);
+    --van-primary-color: var(primary-color);
+    --van-button-primary-color: #121954;
+    --van-success-color: #59a63f;
+    --van-button-border-width: 0;
+    --van-border-color: #dbdbdb;
+    --van-notice-bar-background: linear-gradient(to bottom, #f94c9d, #fd87bb);
+    --van-picker-cancel-action-color: rgba(255, 255, 255, 0.7);
+    --van-picker-confirm-action-color: #fff;
+    --van-picker-option-text-color: #fff;
+    --van-picker-background: #1a3170;
+    --van-dialog-transition: none;
+  }
+}
+
+html, body, #app, .layout {
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+body{
+  @include disable-font-size-zoom;
+}
+
+.layout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding-top: var(--height-header);
+  padding-bottom: var(--height-footer);
+  background: #DBDBDB;
+}
+
+.page{
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container{
+  padding: 0 var(--main-inset);
+  box-sizing: border-box;
+}
